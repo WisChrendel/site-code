@@ -222,7 +222,7 @@ const darkModeColors = {
 function setConsoleLogStyle(mode) {
 	const colors = mode === "dark" ? darkModeColors : lightModeColors;
 	console.log(
-		`%cSite Designed and Built by %cUnbound %c- https://www.unboundcollective.com`,
+		`%cSite Designed and Built by %cUnbound%c- https://www.unboundcollective.com`,
 		`color: ${colors.text}; font-size: 16px;`, // Style for the initial text
 		`color: ${colors.unboundText}; background:${colors.unboundBackground}; font-size: 16px; font-weight: bold; padding: 2px 5px; border-radius: 4px;`, // Style for 'Unbound'
 		`color: ${colors.accent}; font-size: 16px;` // Style for the URL part
