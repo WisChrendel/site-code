@@ -200,3 +200,48 @@ var style = document[_0x3d05ec(0x143)](_0x3d05ec(0x13e));
 (style[_0x3d05ec(0x13f)] = _0x3d05ec(0x148)),
 	(style["innerHTML"] = _0x3d05ec(0x12e)),
 	document[_0x3d05ec(0x13b)](_0x3d05ec(0x12d))[0x0][_0x3d05ec(0x12a)](style);
+
+// Define the color schemes for light and dark modes with updated colors for 'Unbound'
+const lightModeColors = {
+	text: "#212721", // Dark text for light background
+	background: "#d6d1ca",
+	accent: "#707070",
+	unboundText: "#212721", // Dark green text for 'Unbound'
+	unboundBackground: "#9baeab", // Light green background for 'Unbound'
+};
+
+const darkModeColors = {
+	text: "#d6d1ca", // Light text for dark background
+	background: "#212721",
+	accent: "#9baeab",
+	unboundText: "#212721", // Dark green text for 'Unbound'
+	unboundBackground: "#9baeab", // Light green background for 'Unbound'
+};
+
+// Function to set the console log style based on the color scheme
+function setConsoleLogStyle(mode) {
+	const colors = mode === "dark" ? darkModeColors : lightModeColors;
+	console.log(
+		`%cSite Designed and Built by %cUnbound %c- https://www.unboundcollective.com`,
+		`color: ${colors.text}; font-size: 16px;`, // Style for the initial text
+		`color: ${colors.unboundText}; background:${colors.unboundBackground}; font-size: 16px; font-weight: bold; padding: 2px 5px; border-radius: 4px;`, // Style for 'Unbound'
+		`color: ${colors.accent}; font-size: 16px;` // Style for the URL part
+	);
+}
+
+// Detect color scheme preference
+if (
+	window.matchMedia &&
+	window.matchMedia("(prefers-color-scheme: dark)").matches
+) {
+	// Dark mode
+	setConsoleLogStyle("dark");
+} else {
+	// Light mode
+	setConsoleLogStyle("light");
+}
+
+// Optional: Listen for changes in color scheme preference
+window.matchMedia("(prefers-color-scheme: dark)").addListener((e) => {
+	setConsoleLogStyle(e.matches ? "dark" : "light");
+});
